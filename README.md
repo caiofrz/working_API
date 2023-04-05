@@ -1,7 +1,7 @@
 
 # IMDB-API
 
-Este projeto foi criado durante a imersão Java da Alura. Nele foi possível iniciar meus conhecimentos sobre API e requisições pra uma API. A API usada foi a da IMDB.
+Este projeto foi criado durante a imersão Java da Alura. Nele foi possível iniciar meus conhecimentos sobre API e requisições pra uma API. Inicialmente, a API usada foi a da IMDB.
 
 
 ## Stack utilizada
