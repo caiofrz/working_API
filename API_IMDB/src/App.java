@@ -19,7 +19,7 @@ public class App {
 
         String url = "https://imdb-api.com/en/API/Top250Movies/" + API_KEY;
 
-        //url alternativa, caso a API do imdb esteja instável
+        //utilize a url alternativa abaixo, caso a API do imdb esteja instável
         // String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
 
         URI endereco = URI.create(url);

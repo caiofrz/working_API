@@ -1,18 +1,36 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# IMDB-API
 
-## Folder Structure
+Este projeto foi criado durante a imersão Java da Alura. Nele foi possível iniciar meus conhecimentos sobre API e requisições pra uma API. A API usada foi a da IMDB.
 
-The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Stack utilizada
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+**Back-end:** JAVA
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Rodando localmente
+
+Clone o projeto
+
+```bash
+  git clone git push https://github.com/caiofrz/working_API.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd working_API
+```
+
+## Altere as configurações
+
+Para ter acesso a API do IMDB é necessário se registar no site. Após isso, será gerada uma KEY de acesso exclusiva para você.
+
+Basta acessar o arquivo **config.properties** e alterar o valor da propriedade *prop.API_KEY* para a sua key exclusiva. Exemplo: 
+
+```bash
+  prop.API_KEY = minhakey
+```
+
