@@ -1,55 +1,41 @@
-import java.net.URI;
-import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.List;
+import java.util.Properties;
 
 public class App {
     public static void main(String[] args) throws Exception {
         // Properties prop = getProp();
-
         // final String API_KEY = prop.getProperty("prop.API_KEY");
-
         // String url = "https://imdb-api.com/en/API/Top250Movies/" + API_KEY;
 
         //utilize a url alternativa abaixo, caso a API do imdb esteja instável ou indisponível
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        
+        // String url = "https://api.nasa.gov/planetary/apod?api_key=" + API_KEY;
 
-        URI endereco = URI.create(url);
-        HttpRequest request = HttpRequest.newBuilder(endereco).GET().build();
 
-        var client = HttpClient.newHttpClient();
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        String body = response.body();
+        var http = new ClienteHttp();
+        String json = http.buscaDados(url);
 
-        var parser = new JsonParser();
-        List<Map<String, String>> listaFilmes = parser.parse(body);
+        // ExtratorConteudo extrator = new ExtratorConteudoNasa();
+        ExtratorConteudo extrator = new ExtratorConteudoIMDB();
+        List<Conteudo> conteudos = extrator.extrairConteudos(json);
+
 
         var Factory = new FactoryStickers();
 
-        for (Map<String, String> filme : listaFilmes) {
+        for (int i = 0; i < conteudos.size(); i++) {
+            Conteudo conteudo = conteudos.get(i);
 
-            String urlImagem = filme.get("image");
-            String titulo = filme.get("title");
-
-            InputStream input = new URL(urlImagem).openStream();
-            String nomeArquivo = titulo + ".png";
+            InputStream input = new URL(conteudo.getUrlImagem()).openStream();
+            String nomeArquivo ="image/" + conteudo.getTitulo() + ".png";
 
             Factory.criar(input, nomeArquivo);
 
-            System.out.println(titulo);
-            System.out.println("Avaliação: " + filme.get( "imDbRating"));
-            System.out.println();
+            System.out.println(conteudo.getTitulo());
         }
     }
 
