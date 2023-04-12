@@ -15,7 +15,7 @@ Este projeto foi criado durante a imersão Java da Alura. Nele foi possível ini
 Clone o projeto
 
 ```bash
-  git clone git push https://github.com/caiofrz/working_API.git
+  git clone https://github.com/caiofrz/working_API.git
 ```
 
 Entre no diretório do projeto
